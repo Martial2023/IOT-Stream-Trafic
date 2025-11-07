@@ -11,6 +11,10 @@ import base64
 
 logging.basicConfig(level=logging.INFO)
 app = FastAPI()
+@app.get("/", include_in_schema=False)
+@app.head("/", include_in_schema=False)
+async def root():
+    return {"status": "Server en ligne"}
 
 latest_frame = {
     "frame": None,
